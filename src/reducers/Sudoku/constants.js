@@ -1,0 +1,2 @@
+export const SOLUTION_SEARCH = 'SOLUTION_SEARCH';
+export const SOLUTION_FOUND = 'SOLUTION_FOUND';
