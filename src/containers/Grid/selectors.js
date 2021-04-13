@@ -1,2 +1,2 @@
-// eslint-disable-next-line import/prefer-default-export
 export const selectGrid = (state) => state.sudoku.grid || [];
+export const selectParsedGrid = (state) => state.sudoku.parsedGrid || {};

@@ -50,3 +50,5 @@ export const getBlockNumber = (row, column) => {
       } break;
   }
 };
+
+export const checkGridIsFull = (parsedGrid) => Boolean(Object.keys(parsedGrid).find((key) => parsedGrid[key].value === '.'));
