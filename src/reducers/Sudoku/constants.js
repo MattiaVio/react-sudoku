@@ -1,3 +1,4 @@
 export const SOLUTION_SEARCH = 'SOLUTION_SEARCH';
 export const SOLUTION_FOUND = 'SOLUTION_FOUND';
 export const UPDATE_CELL = 'UPDATE_CELL';
+export const LOADED_PAGE = 'LOADED_PAGE';

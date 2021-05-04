@@ -51,4 +51,44 @@ export const getBlockNumber = (row, column) => {
   }
 };
 
-export const checkGridIsFull = (parsedGrid) => Boolean(Object.keys(parsedGrid).find((key) => parsedGrid[key].value === '.'));
+export const isGridFull = (parsedGrid) => Boolean(Object.keys(parsedGrid).find((key) => parsedGrid[key].value === '.'));
+
+export const checkChunk = (chunk) => new Set(chunk).size === 9;
+
+export const checkSolution = (parsedGrid) => {
+  const toCheckRows = [];
+  const toCheckColumns = [];
+  const toCheckBlocks = [];
+
+  Object.keys(parsedGrid).forEach((key) => {
+    for (let i = 0; i < 9; i += 1) {
+      // rows
+      if (!toCheckRows[i]) {
+        toCheckRows[i] = [];
+      }
+      if (parsedGrid[key].row === i) {
+        toCheckRows[i].push(parsedGrid[key].value);
+      }
+
+      // columns
+      if (!toCheckColumns[i]) {
+        toCheckColumns[i] = [];
+      }
+      if (parsedGrid[key].column === i) {
+        toCheckColumns[i].push(parsedGrid[key].value);
+      }
+
+      // blocks
+      if (!toCheckBlocks[i]) {
+        toCheckBlocks[i] = [];
+      }
+      if (getBlockNumber(parsedGrid[key].row, parsedGrid[key].column) === i) {
+        toCheckBlocks[i].push(parsedGrid[key].value);
+      }
+    }
+  });
+
+  return toCheckRows.every(checkChunk)
+      && toCheckColumns.every(checkChunk)
+      && toCheckBlocks.every(checkChunk);
+};

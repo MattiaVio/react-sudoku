@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectGrid, selectParsedGrid } from './selectors';
-import { checkGridIsFull, getBlockNumber } from './utils';
+import { isGridFull, checkSolution, getBlockNumber } from './utils';
 import CellBlock from '../../components/CellBlock';
 import { StyledGrid } from './styles';
 
@@ -24,15 +24,19 @@ const Grid = () => {
   const grid = useSelector(selectGrid);
   const blocks = formatBlocks(grid);
   const parsedGrid = useSelector(selectParsedGrid);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
 
   useEffect(() => {
-    console.log(checkGridIsFull(parsedGrid));
+    setButtonDisabled(isGridFull(parsedGrid));
   }, [parsedGrid]);
 
   return (
-    <StyledGrid>
-      {blocks.map((block) => <CellBlock block={block} />)}
-    </StyledGrid>
+    <>
+      <StyledGrid>
+        {blocks.map((block) => <CellBlock block={block} />)}
+      </StyledGrid>
+      <input type="button" value="Check Solution" onClick={() => checkSolution(parsedGrid)} disabled={buttonDisabled} />
+    </>
   );
 };
 

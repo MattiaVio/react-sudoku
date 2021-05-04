@@ -1,6 +1,8 @@
 import { produce } from 'immer';
 import set from 'lodash/set';
-import { SOLUTION_SEARCH, SOLUTION_FOUND, UPDATE_CELL } from './constants';
+import {
+  SOLUTION_SEARCH, SOLUTION_FOUND, UPDATE_CELL, LOADED_PAGE,
+} from './constants';
 
 export const initialState = {
   grid: [
@@ -104,6 +106,8 @@ export const initialState = {
 export default produce((draft, action) => {
   // eslint-disable-next-line default-case
   switch (action?.type) {
+    case LOADED_PAGE:
+      break;
     case SOLUTION_SEARCH:
       set(draft, 'loading', true);
       break;
