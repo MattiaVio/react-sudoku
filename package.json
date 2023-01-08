@@ -28,7 +28,7 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
+    "@babel/cli": "^7.20.7",
     "@babel/plugin-transform-react-jsx": "^7.10.4",
     "@formatjs/cli": "^2.13.12",
     "babel-plugin-react-intl": "^8.2.17",
